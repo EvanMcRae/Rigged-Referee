@@ -21,7 +21,7 @@ public class FighterController : MonoBehaviour
         if(newDir != ""){
             dir = newDir;
         }
-        transform.localScale = new Vector3(dir == "left" ? -1 : 1, 1, 1);
+        // transform.localScale = new Vector3(dir == "left" ? -1 : 1, 1, 1);
     }
 
     public void Stand(){
