@@ -40,22 +40,28 @@ public class FightParser : MonoBehaviour
 
             // Gather commands into parsable lists
             string[] actions = script[index].ToLower().Split(",");
-            string[][] fightAction = { actions[0].Split(" ") , actions[1].Split(" ") };
+            string[][] fighterActions = { actions[0].Split(" ") , actions[1].Split(" ") };
 
             // Iterate over both fighters
             for (int i = 0; i < 2; i++)
             {
-                if (fightAction[i].Length > 2)
+                if (fighterActions[i].Length < 1)
                 {
-                    Debug.LogError("Too many inputs for Fighter " + (i+1) + "!");
+                    Debug.LogError("Not enough inputs for Fighter " + (i + 1) + "! " + actions[i]);
+                    break;
+                }
+                else if (fighterActions[i].Length > 2)
+                {
+                    Debug.LogError("Too many inputs for Fighter " + (i+1) + "! " + actions[i]);
+                    break;
                 }
 
-                switch (fightAction[i][0])
+                switch (fighterActions[i][0])
                 {
                     case "walk":
-                        if (fightAction[i].Length > 1)
+                        if (fighterActions[i].Length > 1)
                         {
-                            fighters[i].Walk(fightAction[i][1]);
+                            fighters[i].Walk(fighterActions[i][1]);
                         }
                         else
                         {
@@ -64,9 +70,9 @@ public class FightParser : MonoBehaviour
                         break;
 
                     case "jump":
-                        if (fightAction[i].Length > 1)
+                        if (fighterActions[i].Length > 1)
                         {
-                            fighters[i].Jump(fightAction[i][1]);
+                            fighters[i].Jump(fighterActions[i][1]);
                         }
                         else
                         {
@@ -83,9 +89,9 @@ public class FightParser : MonoBehaviour
                         break;
 
                     case "dash":
-                        if (fightAction[i].Length > 1)
+                        if (fighterActions[i].Length > 1)
                         {
-                            fighters[i].Dash(fightAction[i][1]);
+                            fighters[i].Dash(fighterActions[i][1]);
                         }
                         else
                         {
@@ -94,8 +100,11 @@ public class FightParser : MonoBehaviour
                         break;
 
                     case "stand":
+                        fighters[i].Stand();
+                        break;
+
                     default:
-                        // do anything here?
+                        Debug.LogError("Invalid action for Fighter " + (i+1) + "! " + actions[i]);
                         break;
                 }
             }
