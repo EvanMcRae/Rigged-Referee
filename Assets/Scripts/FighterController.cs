@@ -8,12 +8,12 @@ public class FighterController : MonoBehaviour
     //public bool test;
     private bool jumping;
     private Rigidbody2D m_Rigidbody;
+    [SerializeField] private Animator anim;
 
         // Start is called before the first frame update
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
-    //    
     }
 
     void CheckWalkDir(string newDir){
@@ -22,9 +22,12 @@ public class FighterController : MonoBehaviour
         }
     }
 
-    public void Stand(){}
+    public void Stand(){
+        anim.SetTrigger("idle");
+    }
 
     public void Walk(string newDir){
+        anim.SetTrigger("walk");
         //Vector3 targetPosition = Vector3.zero;
         //Vector3 targetMove;//?
         int speed = 1;
@@ -48,6 +51,7 @@ public class FighterController : MonoBehaviour
 
     public void Jump(string newDir){
         int speed = 1;
+        anim.SetTrigger("jump");
         CheckWalkDir(newDir);
 
         if(!jumping){
@@ -71,9 +75,18 @@ public class FighterController : MonoBehaviour
             
 
     }
-    public void Duck(){}
-    public void Punch(){}
-    public void Dash(string dir){}
+    public void Duck(){
+        anim.SetTrigger("duck");
+    }
+    public void Punch(){
+        anim.SetTrigger("punch");
+    }
+    public void Dash(string dir){
+        anim.SetTrigger("dash");
+    }
 
-
+    public void Hurt() {
+        // add knockback, hit flash, etc idk
+        anim.SetTrigger("hurt");
+    }
 }
