@@ -7,7 +7,7 @@ using System.IO;
 public class FightParser : MonoBehaviour
 {
     [SerializeField] private FighterController[] fighters;
-    [SerializeField] private string file;
+    [SerializeField] private int levelNumber;
     private string[] script;
     [Range(0f, 3f)][SerializeField] private float delay = 1f;
     private float lastAction = 0f;
@@ -17,6 +17,7 @@ public class FightParser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        string file = "L" + levelNumber + ".txt";
         script = File.ReadAllLines(Path.Combine(Application.streamingAssetsPath + @"\FightScript\", file));
     }
 
