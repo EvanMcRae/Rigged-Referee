@@ -56,9 +56,20 @@ public class FighterController : MonoBehaviour
         }
         else{
             if(m_Rigidbody.velocity.y == -250){
+            //    m_Rigidbody.velocity.x = 0;
                 jumping = false;
             }
         }
+
+        if(dir == "right"){
+           transform.position = Vector3.MoveTowards(transform.position, transform.position + (speed*Vector3.right), 1);
+           //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
+        }
+        else if(dir == "left"){
+            transform.position = Vector3.MoveTowards(transform.position, transform.position + (speed*Vector3.left), 1);
+        }
+            
+
     }
     public void Duck(){}
     public void Punch(){}
