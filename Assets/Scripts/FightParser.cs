@@ -27,16 +27,15 @@ public class FightParser : MonoBehaviour
     }
 
     private IEnumerator Fight() {
+        // Filter out comments + whitespace
+        while (index < script.Length && (script[index].Trim().StartsWith("#") || String.IsNullOrWhiteSpace(script[index])))
+            index++;
+        
         while (running)
         {
-            // Filter out comments + whitespace
-            while (index < script.Length && (script[index].Trim().StartsWith("#") || String.IsNullOrWhiteSpace(script[index])))
-                index++;
-
             // Make sure we didn't scroll too far
             if (index < script.Length)
             {
-
                 // Gather commands into parsable lists
                 string[] actions = script[index].ToLower().Split(",");
                 string[][] fighterActions = { actions[0].Split(" "), actions[1].Split(" ") };
@@ -108,8 +107,13 @@ public class FightParser : MonoBehaviour
                     }
                 }
 
-                // Increment values for next run
+                // Increment index for next run
                 index++;
+
+                // Filter out comments + whitespace
+                while (index < script.Length && (script[index].Trim().StartsWith("#") || String.IsNullOrWhiteSpace(script[index])))
+                    index++;
+                
                 if (index < script.Length)
                     yield return new WaitForSeconds(delay);
                 else

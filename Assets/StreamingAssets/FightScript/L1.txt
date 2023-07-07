@@ -1,8 +1,8 @@
 # TEST this is a comment TEST
 
 walk left,walk left
-walk right,walk left
-walk left,walk right
+walk,walk left
+walk,walk right
 
 walk right,walk right
 
