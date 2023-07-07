@@ -6,5 +6,7 @@ walk,walk right
 
 walk right,walk right
 
+jump left,jump left
+
 # TEST again 
 
