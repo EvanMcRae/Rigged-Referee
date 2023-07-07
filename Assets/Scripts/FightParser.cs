@@ -6,24 +6,31 @@ using System.IO;
 
 public class FightParser : MonoBehaviour
 {
-    [SerializeField] private FighterController[] fighters;
-    [SerializeField] private int levelNumber;
+    private FighterController[] fighters;
     private string[] script;
     [Range(0f, 3f)][SerializeField] private float delay = 1f;
     private int index = 0;
-    public bool running = true;
+    public bool running = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        string file = "L" + levelNumber + ".txt";
-        script = File.ReadAllLines(Path.Combine(Application.streamingAssetsPath + @"\FightScript\", file));
-        StartCoroutine(Fight());
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void StartFight(int levelNumber)
+    {
+        fighters = FindObjectsOfType<FighterController>();
+        string file = "L" + levelNumber + ".txt";
+        script = File.ReadAllLines(Path.Combine(Application.streamingAssetsPath + @"\FightScript\", file));
+        index = 0;
+        running = true;
+        StartCoroutine(Fight());
     }
 
     private IEnumerator Fight() {
@@ -99,6 +106,9 @@ public class FightParser : MonoBehaviour
 
                         case "stand":
                             fighters[i].Stand();
+                            break;
+
+                        case "wait":
                             break;
 
                         default:
