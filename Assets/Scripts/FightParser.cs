@@ -44,7 +44,7 @@ public class FightParser : MonoBehaviour
             if (index < script.Length)
             {
                 // Gather commands into parsable lists
-                string[] actions = script[index].ToLower().Split(",");
+                string[] actions = script[index].ToLower().Trim().Split(",");
                 string[][] fighterActions = { actions[0].Split(" "), actions[1].Split(" ") };
 
                 // Iterate over both fighters
