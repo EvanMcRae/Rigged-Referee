@@ -9,7 +9,9 @@ public class GameController : MonoBehaviour
     public static GameController instance;
 
     public int fighterOneScore;
+    public Text fighterOneText;
     public int fighterTwoScore;
+    public Text fighterTwoText;
     public int scoreToWin;
 
     public int suspicion;
@@ -53,12 +55,13 @@ public class GameController : MonoBehaviour
         //if f1 button
         if(fighter == 0){
             fighterOneScore += 1;
+            fighterOneText.text = fighterOneScore + "";
         }
         //if f2 button
         else if(fighter == 1){
             fighterTwoScore += 1;
+            fighterTwoText.text = fighterTwoScore + "";
         }
-
         //if suspicous
         //add suspicion
         CheckSusAction(fighter);
