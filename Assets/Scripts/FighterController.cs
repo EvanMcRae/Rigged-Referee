@@ -87,9 +87,16 @@ public class FighterController : MonoBehaviour
         ChangeDir(newDir);
         anim.SetTrigger("dash");
     }
-
     public void Hurt() {
         // add knockback, hit flash, etc idk
         anim.SetTrigger("hurt");
+    }
+    public void KnockOut()
+    {
+        anim.SetTrigger("knockout");
+    }
+    public void GetUp()
+    {
+        anim.SetTrigger("getup");
     }
 }
