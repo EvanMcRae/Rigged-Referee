@@ -76,7 +76,7 @@ public class GameController : MonoBehaviour
         //same for player 2
 
         //update sus meter
-        UpdateSusMeter()
+        UpdateSusMeter();
 
         CheckVictory();
     }
@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour
         //if [losing?] fighter
         //suspicion += 20%
 
-        UpdateSusMeter()
+        UpdateSusMeter();
 
         CheckVictory();
     }
