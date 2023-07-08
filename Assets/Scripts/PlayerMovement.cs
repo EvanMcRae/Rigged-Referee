@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float movementX;
     [SerializeField] private Animator anim;
     [SerializeField] private SoundPlayer soundPlayer;
-    // TODO add whistle sound + other sound clips as instance vars
+    [SerializeField] private SoundClip whistle, flag, count;
 
     // Start is called before the first frame update
     void Start()

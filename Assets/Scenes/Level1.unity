@@ -167,6 +167,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 591638470}
   soundPlayer: {fileID: 667560484}
+  whistle: {fileID: 11400000, guid: 40861d1d094f3ff478ef1281a9d61c93, type: 2}
+  flag: {fileID: 11400000, guid: e08b935d9416260479b5589c5fed6335, type: 2}
+  count: {fileID: 11400000, guid: b916d635546218b4dac23c549d713f6e, type: 2}
 --- !u!212 &591638468
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -523,6 +526,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dir: left
   soundPlayer: {fileID: 732662386}
+  step: {fileID: 11400000, guid: 4f699b80422ee264cac645b4d91fc10b, type: 2}
+  jump: {fileID: 11400000, guid: 826bd1976ad1fe0449e22d328966eee4, type: 2}
+  punch: {fileID: 11400000, guid: 8b4661cb343a9a048b951f8d6b194c28, type: 2}
+  hurt: {fileID: 11400000, guid: 3ae61e7f1e4f4154486def325ea81174, type: 2}
+  knockout: {fileID: 11400000, guid: 9c29ab6ce55235140bbca6a8edc566a9, type: 2}
+  getup: {fileID: 11400000, guid: 7844d5712945b304ba2b2025d5247827, type: 2}
+  dash: {fileID: 11400000, guid: 729e0320cba7eee4db89089b4eb92021, type: 2}
+  duck: {fileID: 11400000, guid: 1764ee754d62bff439fdf2697ef5bd20, type: 2}
   anim: {fileID: 1165928735}
 --- !u!212 &1165928730
 SpriteRenderer:
@@ -734,6 +745,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dir: right
   soundPlayer: {fileID: 1077018363}
+  step: {fileID: 11400000, guid: 4f699b80422ee264cac645b4d91fc10b, type: 2}
+  jump: {fileID: 11400000, guid: 826bd1976ad1fe0449e22d328966eee4, type: 2}
+  punch: {fileID: 11400000, guid: 8b4661cb343a9a048b951f8d6b194c28, type: 2}
+  hurt: {fileID: 11400000, guid: 3ae61e7f1e4f4154486def325ea81174, type: 2}
+  knockout: {fileID: 11400000, guid: 9c29ab6ce55235140bbca6a8edc566a9, type: 2}
+  getup: {fileID: 11400000, guid: 7844d5712945b304ba2b2025d5247827, type: 2}
+  dash: {fileID: 11400000, guid: 729e0320cba7eee4db89089b4eb92021, type: 2}
+  duck: {fileID: 11400000, guid: 1764ee754d62bff439fdf2697ef5bd20, type: 2}
   anim: {fileID: 1202333947}
 --- !u!212 &1202333943
 SpriteRenderer:

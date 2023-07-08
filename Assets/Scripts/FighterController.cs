@@ -9,6 +9,7 @@ public class FighterController : MonoBehaviour
     private bool jumping;
     private Rigidbody2D m_Rigidbody;
     [SerializeField] private SoundPlayer soundPlayer;
+    [SerializeField] private SoundClip step, jump, punch, hurt, knockout, getup, dash, duck;
     [SerializeField] private Animator anim;
 
         // Start is called before the first frame update
@@ -30,6 +31,7 @@ public class FighterController : MonoBehaviour
 
     public void Walk(string newDir){
         anim.SetTrigger("walk");
+        soundPlayer.PlaySound(step);
         //Vector3 targetPosition = Vector3.zero;
         //Vector3 targetMove;//?
         int speed = 1;
@@ -54,6 +56,7 @@ public class FighterController : MonoBehaviour
     public void Jump(string newDir){
         int speed = 1;
         anim.SetTrigger("jump");
+        soundPlayer.PlaySound(jump);
         ChangeDir(newDir);
 
         if(!jumping){
@@ -79,24 +82,30 @@ public class FighterController : MonoBehaviour
     }
     public void Duck(){
         anim.SetTrigger("duck");
+        soundPlayer.PlaySound(duck);
     }
     public void Punch(){
         anim.SetTrigger("punch");
+        soundPlayer.PlaySound(punch);
     }
     public void Dash(string newDir){
         ChangeDir(newDir);
         anim.SetTrigger("dash");
+        soundPlayer.PlaySound(dash);
     }
     public void Hurt() {
         // add knockback, hit flash, etc idk
         anim.SetTrigger("hurt");
+        soundPlayer.PlaySound(hurt);
     }
     public void KnockOut()
     {
         anim.SetTrigger("knockout");
+        soundPlayer.PlaySound(knockout);
     }
     public void GetUp()
     {
         anim.SetTrigger("getup");
+        soundPlayer.PlaySound(getup);
     }
 }
