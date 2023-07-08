@@ -504,6 +504,7 @@ GameObject:
   - component: {fileID: 1165928732}
   - component: {fileID: 1165928733}
   - component: {fileID: 1165928735}
+  - component: {fileID: 1165928736}
   m_Layer: 0
   m_Name: Fighter1
   m_TagString: Untagged
@@ -695,6 +696,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1165928736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165928728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b614302fb4918a4bb2ddca8b35ac972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 03b080d4f56a6da4f99725d553621fdf, type: 2}
+  alsoFlash: []
+  forceNonSolidFlash: 0
+  spriteRenderer: {fileID: 1165928730}
 --- !u!1 &1202333941
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +726,7 @@ GameObject:
   - component: {fileID: 1202333945}
   - component: {fileID: 1202333946}
   - component: {fileID: 1202333947}
+  - component: {fileID: 1202333948}
   m_Layer: 0
   m_Name: Fighter2
   m_TagString: Untagged
@@ -900,6 +918,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1202333948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202333941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b614302fb4918a4bb2ddca8b35ac972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 03b080d4f56a6da4f99725d553621fdf, type: 2}
+  alsoFlash: []
+  forceNonSolidFlash: 0
+  spriteRenderer: {fileID: 1202333943}
 --- !u!1 &1244308367
 GameObject:
   m_ObjectHideFlags: 0
