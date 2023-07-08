@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ba0ddfc7df6b14ca1fc807d8096048, type: 3}
   m_Name: Game
   m_EditorClassIdentifier: 
-  children: []
+  children:
+  - {fileID: 11400000, guid: 574d680f48b388f4191b5ee2a83d602a, type: 2}
+  - {fileID: 11400000, guid: 2788f32fce3edde41ba4ffc7b4a9c6c1, type: 2}
+  - {fileID: 11400000, guid: c0420999bee96bc46bfba43ff3ff13fd, type: 2}
+  - {fileID: 11400000, guid: 9168d53063d461f4b9a5695628a4f8e3, type: 2}
+  - {fileID: 11400000, guid: 395cba98bed19c44b98175c4c1b53b4c, type: 2}
