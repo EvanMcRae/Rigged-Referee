@@ -5,8 +5,13 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public int currentLevel = 0;
     public static GameController instance;
+    public static bool begun = false;
+    public int stage = 0;
+    [SerializeField] private Text stageLabel;
+    [SerializeField] private Timer timer;
+    [SerializeField] private GameObject[] fighterOnePrefabs, fighterTwoPrefabs;
+    private GameObject fighterOne, fighterTwo;
 
     public int fighterOneScore;
     public Text fighterOneText;
@@ -17,26 +22,15 @@ public class GameController : MonoBehaviour
     public int suspicion;
     public int susToLose;
 
-    public Image susMeter;
+    [SerializeField] private Image susMeter;
+
+    [SerializeField] private SoundPlayer soundPlayer;
+    [SerializeField] private SoundClip winSound, loseSound, matchStart, matchEnd;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Singleton behavior
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else 
-        {
-            //GetComponent<FightParser>().StartFight(currentLevel);
-            susMeter = GameObject.Find("Canvas/SuspicionBar/SuspicionBarFill").GetComponent<Image>();
-        }
+        nextStage();
     }
 
     // Update is called once per frame
@@ -49,6 +43,12 @@ public class GameController : MonoBehaviour
             AwardScore(1);
         }
         UpdateSusMeter();
+
+        // TODO REMOVE - DEBUG!!
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            nextStage();
+        }
     }
 
     //awards points to a figther based on the player's command
@@ -103,17 +103,81 @@ public class GameController : MonoBehaviour
         susMeter.fillAmount = suspicion / (float)susToLose;
     }
 
-
     //decide if the player won or lost
     void CheckVictory(){
         if(suspicion >= susToLose){
-            //lose
+            LoseGame();
         }
         else if(fighterOneScore >= scoreToWin){
-            //win
+            if (stage == 3)
+                WinGame();
+            else
+                WinStage();
         }
         else if(fighterTwoScore >= scoreToWin){
-            //lose
+            LoseGame();
         }
+    }
+
+    void LoseGame()
+    {
+        begun = false;
+        soundPlayer.PlaySound(loseSound);
+        // show lose dialog with return to menu button
+    }
+
+    void WinStage()
+    {
+        begun = false;
+        soundPlayer.PlaySound(matchEnd);
+        // show win dialog with advance to next stage button
+    }
+
+    void WinGame()
+    {
+        begun = false;
+        soundPlayer.PlaySound(winSound);
+        // show win dialog with return to menu button
+    }
+
+    public void nextStage()
+    {
+        begun = false;
+        if (stage < 3)
+            StartCoroutine(PrepareStage());
+    }
+
+    IEnumerator PrepareStage()
+    {
+        // reset from previous stage, if applicable
+        if (stage > 0)
+        {
+            Crossfade.FadeStart();
+            yield return new WaitForSeconds(1.0f);
+            
+            GameObject.Destroy(fighterOne);
+            GameObject.Destroy(fighterTwo);
+            fighterOneText.text = string.Format("{0:000}", (fighterOneScore = 0));
+            fighterTwoText.text = string.Format("{0:000}", (fighterTwoScore = 0));
+            susMeter.fillAmount = (suspicion = 0);
+
+            Crossfade.FadeEnd();
+        }
+
+        fighterOne = GameObject.Instantiate(fighterOnePrefabs[stage], new Vector3(-5.0f, -3.2f, 0f), Quaternion.identity);
+        fighterTwo = GameObject.Instantiate(fighterTwoPrefabs[stage], new Vector3(5.0f, -3.2f, 0f), Quaternion.identity);
+
+        // TODO have different times per stage?
+        timer.timeLeft = 60f;
+        timer.updateTimer(timer.timeLeft - 1);
+        
+        stageLabel.text = (stage+1) + "";
+        soundPlayer.PlaySound(matchStart);
+
+        // show animated 3-2-1 countdown text in the middle of the screen
+
+        yield return new WaitForSeconds(3.0f);
+        stage++;
+        begun = true;
     }
 }

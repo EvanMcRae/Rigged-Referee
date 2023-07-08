@@ -481,7 +481,6 @@ public class AudioManager : MonoBehaviour
             {
                 if (path.Count > 0 && node.name.ToLower() == path[0].ToLower())
                 {
-                    // Debug.Log("Found " + path[0]);
                     current = node;
                     path.RemoveAt(0);
                     return FindSound(node, path);
@@ -512,7 +511,6 @@ public class AudioManager : MonoBehaviour
             {
                 if (path.Count > 0 && node.name.ToLower() == path[0].ToLower())
                 {
-                    // Debug.Log("Found " + path[0]);
                     current = node;
                     path.RemoveAt(0);
                     return FindMusic(node, path);

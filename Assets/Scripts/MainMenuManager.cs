@@ -16,7 +16,7 @@ public class MainMenuManager : MonoBehaviour
         inMainMenu = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        //EventSystem.current.SetSelectedGameObject(newGameButton.gameObject);
+        EventSystem.current.SetSelectedGameObject(startButton.gameObject);
     }
 
     public void Update()
@@ -37,24 +37,6 @@ public class MainMenuManager : MonoBehaviour
 #endif
     }
 
-    public string GetMostRecentSave()
-    {
-        string[] files = Directory.GetFiles(Application.persistentDataPath + @"\SaveData");
-
-        string mostRecentFile = "";
-        System.DateTime mostRecentDate = System.DateTime.Now;
-        foreach(string file in files)
-        {
-            if(File.GetLastWriteTime(file) < System.DateTime.Now)
-            {
-                mostRecentDate = File.GetLastWriteTime(file);
-                mostRecentFile = file;
-            }
-        }
-        Debug.Log("most recent save: " + mostRecentFile + " accessed on " + mostRecentDate.ToString());
-
-        return mostRecentFile;
-    }
     public void OnDestroy()
     {
         PauseScreen.canPause = true;
@@ -62,14 +44,4 @@ public class MainMenuManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
 
-}
-
-[System.Serializable]
-public class MenuBackgrounds
-{
-    public GameObject Forest;
-    public GameObject Fields;
-    public GameObject Caves;
-    public GameObject Town;
-    public GameObject Desert;
 }

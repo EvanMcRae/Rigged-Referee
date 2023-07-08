@@ -20,7 +20,7 @@ public class FighterController : MonoBehaviour
 
     //fixed update always runs 60 times per second, independent of the frame rate
     private void FixedUpdate() {
-        if(!inAnimation){
+        if(!inAnimation && GameController.begun){
             StartCoroutine(TakeAction());
         }
     }

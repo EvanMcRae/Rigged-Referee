@@ -5,32 +5,27 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private float timeLeft;
-    private bool timerOn = false;
+    public float timeLeft;
     [SerializeField] private Text timerText;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        timerOn = true;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (timerOn && timeLeft > 0)
+        if (GameController.begun)
         {
-            timeLeft -= Time.deltaTime;
-            updateTimer(timeLeft);
-        }
-        else
-        {
-            timeLeft = 0;
-            timerOn = false;
+            if (timeLeft > 0)
+            {
+                timeLeft -= Time.deltaTime;
+                updateTimer(timeLeft);
+            }
+            else
+            {
+                timeLeft = 0;
+            }
         }
     }
 
-    private void updateTimer(float currentTime)
+    public void updateTimer(float currentTime)
     {
         currentTime += 1;
         int currentMins = Mathf.FloorToInt(currentTime / 60);
