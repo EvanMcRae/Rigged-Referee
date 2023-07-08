@@ -26,7 +26,7 @@ public class FighterController : MonoBehaviour
 
     //basic possible example of what AI could look like
     private IEnumerator TakeAction(){
-        if(Random.Range(0f, 1f) >= 0.5f){
+        if(Random.Range(0, 2) >= 1){
             inAnimation = true;
             for(int i = 0; i < 6; i++){
                 Walk("left");
