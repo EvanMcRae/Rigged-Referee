@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4999745401365414928
 MonoBehaviour:
@@ -46,7 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 0
-  paused: 0
+  fighterOneScore: 0
+  fighterOneText: {fileID: 0}
+  fighterTwoScore: 0
+  fighterTwoText: {fileID: 0}
+  scoreToWin: 5
+  suspicion: 0
+  susToLose: 100
+  susMeter: {fileID: 0}
 --- !u!114 &2274640016890284953
 MonoBehaviour:
   m_ObjectHideFlags: 0

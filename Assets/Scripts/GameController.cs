@@ -48,6 +48,7 @@ public class GameController : MonoBehaviour
         else if(Input.GetButtonDown("Fire2")){
             AwardScore(1);
         }
+        UpdateSusMeter();
     }
 
     //awards points to a figther based on the player's command
@@ -99,7 +100,7 @@ public class GameController : MonoBehaviour
 
     //updates the suspicion meter//TODO TEST TO SEE IF DONE CORRECTLY
     void UpdateSusMeter(){
-        susMeter.fillAmount = suspicion / susToLose;
+        susMeter.fillAmount = suspicion / (float)susToLose;
     }
 
 
