@@ -35,6 +35,6 @@ public class Timer : MonoBehaviour
         currentTime += 1;
         int currentMins = Mathf.FloorToInt(currentTime / 60);
         int currentSecs = Mathf.FloorToInt(currentTime % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", currentMins, currentSecs);
+        timerText.text = string.Format("{0:00} {1:00}", currentMins, currentSecs);
     }
 }
