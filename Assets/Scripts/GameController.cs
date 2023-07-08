@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class GameController : MonoBehaviour
 
     public int suspicion;
     public int susToLose;
+
+    public Image susMeter;
 
     // Start is called before the first frame update
     void Start()
@@ -30,29 +33,39 @@ public class GameController : MonoBehaviour
         else 
         {
             GetComponent<FightParser>().StartFight(currentLevel);
+            susMeter = GameObject.Find("Canvas/SuspicionBar/SuspicionBarFill").GetComponent<Image>();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetButtonDown("Fire1")){
+            AwardScore(0);
+        }
+        else if(Input.GetButtonDown("Fire2")){
+            AwardScore(1);
+        }
     }
 
     //awards points to a figther based on the player's command
-    void AwardScore(){
+    void AwardScore(int fighter){
         //if f1 button
-        //fighterOneScore += 1;
+        if(fighter == 0){
+            fighterOneScore += 1;
+        }
         //if f2 button
-        //fighterTwoScore +=2;
+        else if(fighter == 1){
+            fighterTwoScore += 1;
+        }
 
         //if suspicous
         //add suspicion
-
-        //CheckVictory()
+        CheckSusAction(fighter);
     }
 
     //check if the player's current action is suspicious, add apropriate suspicion if so
-    void CheckSusAction(){
+    void CheckSusAction(int fighter){
         //make if statements for fighters
         
         //if player 1 awared and player 1 hit, add 0%
@@ -61,7 +74,31 @@ public class GameController : MonoBehaviour
         //if player 1 didn't punch, add 80%
 
         //same for player 2
+
+        //update sus meter
+        UpdateSusMeter()
+
+        CheckVictory();
     }
+
+    //add suspicion if no ation taken when aproprate
+    //activate when no score after good hit, somehow have way to check(perhaps put a timer to here when good hit takes place)
+    void CheckSusInaction(){
+        //if [winning?] fighter
+        //suspicion += 10%
+        //if [losing?] fighter
+        //suspicion += 20%
+
+        UpdateSusMeter()
+
+        CheckVictory();
+    }
+
+    //updates the suspicion meter//TODO TEST TO SEE IF DONE CORRECTLY
+    void UpdateSusMeter(){
+        susMeter.fillAmount = suspicion / susToLose;
+    }
+
 
     //decide if the player won or lost
     void CheckVictory(){
