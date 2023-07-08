@@ -6,7 +6,7 @@ public class FighterController : MonoBehaviour
 {
     public string dir;//the direction the fighter is currently moving
     //public bool test;
-    private bool jumping;
+    private bool inAnimation;
     private Rigidbody2D m_Rigidbody;
     [SerializeField] private SoundPlayer soundPlayer;
     [SerializeField] private SoundClip step, jump, punch, hurt, knockout, getup, dash, duck;
@@ -16,6 +16,33 @@ public class FighterController : MonoBehaviour
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate() {
+        if(!inAnimation){
+            StartCoroutine(TakeAction());
+        }
+    }
+
+    //basic possible example of what AI could look like
+    private IEnumerator TakeAction(){
+        if(Random.Range(0f, 1f) >= 0.5f){
+            inAnimation = true;
+            for(int i = 0; i < 6; i++){
+                Walk("left");
+                yield return new WaitForSeconds(.016f);//set to .016f seconds or aprox 1 frame
+            }
+            inAnimation = false;
+        }
+        else{
+            inAnimation = true;
+            for(int i = 0; i < 6; i++){
+                Walk("right");
+                yield return new WaitForSeconds(.016f);//set to .016f seconds or aprox 1 frame
+            }
+            inAnimation = false;
+        }
+        
     }
 
     void ChangeDir(string newDir){
@@ -37,16 +64,16 @@ public class FighterController : MonoBehaviour
         soundPlayer.PlaySound(step);
         //Vector3 targetPosition = Vector3.zero;
         //Vector3 targetMove;//?
-        int speed = 1;
+        int speed = 3;
         ChangeDir(newDir);
         // + transform.position;//or just have this saved?
 
         if(dir == "right"){
-           transform.position = Vector3.MoveTowards(transform.position, transform.position + (speed*Vector3.right), 1);
+           transform.position = Vector3.MoveTowards(transform.position, transform.position + (speed*Vector3.right), speed*Time.deltaTime);
            //transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
         }
         else if(dir == "left"){
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + (speed*Vector3.left), 1);
+            transform.position = Vector3.MoveTowards(transform.position, transform.position + (speed*Vector3.left), speed*Time.deltaTime);
         }
         else{
             //do nothing, I suppose
@@ -63,14 +90,14 @@ public class FighterController : MonoBehaviour
         soundPlayer.PlaySound(jump);
         ChangeDir(newDir);
 
-        if(!jumping){
+        if(!inAnimation){
             m_Rigidbody.AddForce(new Vector2(0, 250));
-            jumping = true;
+            inAnimation = true;
         }
         else{
             if(m_Rigidbody.velocity.y == -250){
             //    m_Rigidbody.velocity.x = 0;
-                jumping = false;
+                inAnimation = false;
             }
         }
 

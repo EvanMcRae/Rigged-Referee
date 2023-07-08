@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
         }
         else 
         {
-            GetComponent<FightParser>().StartFight(currentLevel);
+            //GetComponent<FightParser>().StartFight(currentLevel);
             susMeter = GameObject.Find("Canvas/SuspicionBar/SuspicionBarFill").GetComponent<Image>();
         }
     }

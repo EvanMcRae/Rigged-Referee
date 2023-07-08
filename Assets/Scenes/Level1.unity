@@ -502,7 +502,6 @@ GameObject:
   - component: {fileID: 1165928730}
   - component: {fileID: 1165928729}
   - component: {fileID: 1165928732}
-  - component: {fileID: 1165928734}
   - component: {fileID: 1165928733}
   - component: {fileID: 1165928735}
   m_Layer: 0
@@ -575,7 +574,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -675,20 +674,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1165928734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165928728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31cbb95e03db35141b8a9d37cd8b99bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 1
-  running: 0
 --- !u!95 &1165928735
 Animator:
   serializedVersion: 5
@@ -794,7 +779,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1107,6 +1092,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2551109806283102873, guid: 80b2f5d8f6727d940a22e5fe1f276a63, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9186960249178664879, guid: 80b2f5d8f6727d940a22e5fe1f276a63, type: 3}
       propertyPath: m_Name
       value: Floor
@@ -1124,6 +1113,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2274640016890284953, guid: 85b3b313b5b7f964f84c96becb8f647d, type: 3}
+      propertyPath: running
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274640016890284953, guid: 85b3b313b5b7f964f84c96becb8f647d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2772825768530357800, guid: 85b3b313b5b7f964f84c96becb8f647d, type: 3}
       propertyPath: m_RootOrder
       value: 3
