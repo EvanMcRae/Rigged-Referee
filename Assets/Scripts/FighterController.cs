@@ -18,6 +18,7 @@ public class FighterController : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody2D>();
     }
 
+    //fixed update always runs 60 times per second, independent of the frame rate
     private void FixedUpdate() {
         if(!inAnimation){
             StartCoroutine(TakeAction());
@@ -26,7 +27,9 @@ public class FighterController : MonoBehaviour
 
     //basic possible example of what AI could look like
     private IEnumerator TakeAction(){
-        if(Random.Range(0, 2) >= 1){
+        int choice = Random.Range(0, 2);
+
+        if(choice == 0){
             inAnimation = true;
             for(int i = 0; i < 6; i++){
                 Walk("left");
@@ -34,13 +37,19 @@ public class FighterController : MonoBehaviour
             }
             inAnimation = false;
         }
-        else{
+        else if(choice == 1){
             inAnimation = true;
             for(int i = 0; i < 6; i++){
                 Walk("right");
                 yield return new WaitForSeconds(.016f);//set to .016f seconds or aprox 1 frame
             }
             inAnimation = false;
+        }
+        else if(choice == 2){
+
+        }
+        else{
+
         }
         
     }
