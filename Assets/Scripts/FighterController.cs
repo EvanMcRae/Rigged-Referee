@@ -25,6 +25,9 @@ public class FighterController : MonoBehaviour
         // transform.localScale = new Vector3(dir == "left" ? -1 : 1, 1, 1);
     }
 
+    //Most of code below currently assumes that a script is being given to tell what to do next, change as needed
+
+    //fighter stands still, possibly blocks?
     public void Stand(){
         anim.SetTrigger("idle");
     }
@@ -53,6 +56,7 @@ public class FighterController : MonoBehaviour
 
     }
 
+    //fighter jumps into the air with force and lands, can jump in a chosen direction
     public void Jump(string newDir){
         int speed = 1;
         anim.SetTrigger("jump");
@@ -80,10 +84,13 @@ public class FighterController : MonoBehaviour
             
 
     }
+    //character gets into a low evasive stance, optional and probably will not be used
     public void Duck(){
         anim.SetTrigger("duck");
         soundPlayer.PlaySound(duck);
     }
+    //character punches to try to hit the opponent
+    //should be created so a message gets sent to fight parser determining if the attack is hit or block, or if it's a wiff
     public void Punch(){
         anim.SetTrigger("punch");
         soundPlayer.PlaySound(punch);
@@ -93,6 +100,7 @@ public class FighterController : MonoBehaviour
         anim.SetTrigger("dash");
         soundPlayer.PlaySound(dash);
     }
+    //the fighter gets hit by an attack, cancels the previous action they were taking
     public void Hurt() {
         // add knockback, hit flash, etc idk
         anim.SetTrigger("hurt");
