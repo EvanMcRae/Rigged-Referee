@@ -56,12 +56,12 @@ public class GameController : MonoBehaviour
         //if f1 button
         if(fighter == 0){
             fighterOneScore += 1;
-            fighterOneText.text = fighterOneScore + "";
+            fighterOneText.text = string.Format("{0:00}", fighterOneScore);
         }
         //if f2 button
         else if(fighter == 1){
             fighterTwoScore += 1;
-            fighterTwoText.text = fighterTwoScore + "";
+            fighterTwoText.text = string.Format("{0:00}", fighterTwoScore);
         }
         //if suspicous
         //add suspicion
