@@ -571,6 +571,17 @@ Transform:
   m_Father: {fileID: 335610190}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1092336836 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8356424426433992699, guid: 85b3b313b5b7f964f84c96becb8f647d, type: 3}
+  m_PrefabInstance: {fileID: 5346841098428343757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92cc42bece8df94cbdcba6dcfdcaeb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1110199719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,6 +1169,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 934888070701840552, guid: bec02ac1296cab94cb6eb3129d2944f9, type: 3}
+      propertyPath: countdown
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fd07472ddd490a42b1c31b60f40e0e2, type: 2}
+    - target: {fileID: 934888070701840552, guid: bec02ac1296cab94cb6eb3129d2944f9, type: 3}
+      propertyPath: soundPlayer
+      value: 
+      objectReference: {fileID: 1092336836}
     - target: {fileID: 1007329485736866826, guid: bec02ac1296cab94cb6eb3129d2944f9, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1000

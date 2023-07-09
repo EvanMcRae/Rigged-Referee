@@ -283,7 +283,6 @@ public class GameController : MonoBehaviour
         timer.updateTimer(timer.timeLeft - 1);
         
         stageLabel.text = (stage+1) + "";
-        soundPlayer.PlaySound(matchStart);
 
         countdown.StartCountdown();
 
