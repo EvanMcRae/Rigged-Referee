@@ -34,6 +34,10 @@ public class GameController : MonoBehaviour
     //which action is being taken
     private int choice;
 
+    public GameObject WinMenu;
+
+    public GameObject LoseMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -229,6 +233,7 @@ public class GameController : MonoBehaviour
     void LoseGame()
     {
         print("Lose Game");
+        LoseMenu.GetComponent<WinLoseScreen>().showLosePanel();
         begun = false;
         soundPlayer.PlaySound(loseSound);
         // show lose dialog with return to menu button
@@ -237,6 +242,7 @@ public class GameController : MonoBehaviour
     void WinStage()
     {
         print("Win Stage");
+        WinMenu.GetComponent<WinLoseScreen>().showWinPanel();
         begun = false;
         soundPlayer.PlaySound(matchEnd);
         // show win dialog with advance to next stage button
@@ -245,6 +251,7 @@ public class GameController : MonoBehaviour
     void WinGame()
     {
         print("Win Game");
+        WinMenu.GetComponent<WinLoseScreen>().showWinPanel();
         begun = false;
         soundPlayer.PlaySound(winSound);
         // show win dialog with return to menu button
