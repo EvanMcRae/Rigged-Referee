@@ -35,9 +35,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        susMeter = GameObject.Find("Canvas/SuspicionBar/SuspicionBarFill").GetComponent<Image>();
-        timer = GameObject.Find("Canvas/Timer").GetComponent<Timer>();
-        stageLabel = GameObject.Find("Canvas/StageLabel").GetComponent<Text>();
+        //susMeter = GameObject.Find("Canvas/SuspicionBar/SuspicionBarFill").GetComponent<Image>();
+        //timer = GameObject.Find("Canvas/Timer").GetComponent<Timer>();
+        //stageLabel = GameObject.Find("Canvas/StageLabel").GetComponent<Text>();
 
         inAction = false;
         nextStage();
