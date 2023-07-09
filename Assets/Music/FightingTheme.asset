@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8ab1491f414d444958e825dc1cbe34, type: 3}
   m_Name: FightingTheme
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
-  BPM: 0
-  timeSignature: 0
-  barsLength: 0
-  area: 0
+  clip: {fileID: 8300000, guid: efba313585dbc8848ab25a5bc2bba95c, type: 3}
+  BPM: 155
+  timeSignature: 4
+  barsLength: 42
+  area: 2
