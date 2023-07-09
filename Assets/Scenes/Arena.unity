@@ -1668,6 +1668,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9210400246396953877}
     - target: {fileID: 4999745401365414928, guid: 85b3b313b5b7f964f84c96becb8f647d, type: 3}
+      propertyPath: WinGameButton
+      value: 
+      objectReference: {fileID: 867850751}
+    - target: {fileID: 4999745401365414928, guid: 85b3b313b5b7f964f84c96becb8f647d, type: 3}
       propertyPath: fighterOneText
       value: 
       objectReference: {fileID: 1979325498}
