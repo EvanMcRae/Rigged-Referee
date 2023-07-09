@@ -6,12 +6,14 @@ using UnityEngine.EventSystems;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public UnityEngine.UI.Button startButton;
+    public UnityEngine.UI.Button startButton, creditsButton, returnCredits, instructionsButton, returnInstructions;
     public static MainMenuManager main;
     public static bool inMainMenu;
-    private bool quit = false;
+    private bool quit = false, inCredits = false, inInstructions = false;
     public SoundClip click;
     public SoundPlayer soundPlayer;
+    public GameObject creditsPanel;
+    public GameObject instructionsPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +29,24 @@ public class MainMenuManager : MonoBehaviour
     {
         if((Input.GetAxisRaw("Vertical") != 0) && EventSystem.current.currentSelectedGameObject == null)
         {
-            EventSystem.current.SetSelectedGameObject(startButton.gameObject);
+            if (inCredits)
+            {
+                EventSystem.current.SetSelectedGameObject(returnCredits.gameObject);
+            }
+            else if (inInstructions)
+            {
+                EventSystem.current.SetSelectedGameObject(returnInstructions.gameObject);
+            }
+            else
+            {
+                EventSystem.current.SetSelectedGameObject(startButton.gameObject);
+            }
         }
     }
 
     public void StartGame()
     {
-        if (!ChangeScene.changingScene && Crossfade.over && !quit)
+        if (!ChangeScene.changingScene && Crossfade.over && !quit && !inCredits && !inInstructions)
         {
             soundPlayer.PlaySound(click);
             AudioManager.instance.FadeOutCurrent();
@@ -44,7 +57,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void Quit()
     {
-        if (!ChangeScene.changingScene && Crossfade.over && !quit)
+        if (!ChangeScene.changingScene && Crossfade.over && !quit && !inCredits && !inInstructions)
         {
             quit = true;
             soundPlayer.PlaySound(click);
@@ -56,20 +69,41 @@ public class MainMenuManager : MonoBehaviour
 
     public void ShowCredits()
     {
-        soundPlayer.PlaySound(click);
-        // show credits panel and hide the other stuff
+        if (!ChangeScene.changingScene && Crossfade.over && !quit && !inCredits && !inInstructions)
+        {
+            soundPlayer.PlaySound(click);
+            creditsPanel.SetActive(true);
+            inCredits = true;
+        }
     }
 
     public void ShowInstructions()
     {
-        soundPlayer.PlaySound(click);
-        // show instructions panel and hide the other stuff
+        if (!ChangeScene.changingScene && Crossfade.over && !quit && !inCredits && !inInstructions)
+        {
+            soundPlayer.PlaySound(click);
+            instructionsPanel.SetActive(true);
+            inInstructions = true;
+        }
     }
 
     public void ReturnToMainMenu()
     {
         soundPlayer.PlaySound(click);
-        // hide credits/instructions panel and show the other stuff
+
+        if (inCredits)
+        {
+            creditsPanel.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(creditsButton.gameObject);
+            inCredits = false;
+        }
+
+        if (inInstructions)
+        {
+            instructionsPanel.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(instructionsButton.gameObject);
+            inInstructions = false;
+        }
     }
 
     IEnumerator QuitRoutine()

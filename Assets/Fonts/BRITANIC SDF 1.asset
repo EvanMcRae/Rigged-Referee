@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: BRITANIC SDF
+  m_Name: BRITANIC SDF 1
   m_EditorClassIdentifier: 
-  hashCode: 1791270809
+  hashCode: 778757512
   material: {fileID: 7035181827977515771}
-  materialHashCode: -1288418663
+  materialHashCode: 1637458984
   m_Version: 1.1.0
   m_SourceFontFileGUID: b6509990075506f42a18fc17ef8e02cc
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: b6509990075506f42a18fc17ef8e02cc, type: 3}
@@ -1569,5 +1569,5 @@ Material:
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+    - _UnderlayColor: {r: 1, g: 0.64779866, b: 0.64779866, a: 0.5}
   m_BuildTextureStacks: []
