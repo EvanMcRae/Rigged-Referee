@@ -71,7 +71,9 @@ public class GameController : MonoBehaviour
     }
 
     IEnumerator DecideAction(){
-        choice = Random.Range(0, 6);
+        yield return new WaitForSeconds(2f);
+
+        choice = Random.Range(1, 5);
 
         if(choice == 1){
             //fighter 1 hit
@@ -127,11 +129,31 @@ public class GameController : MonoBehaviour
         //make if statements for fighters
         
         //if player 1 awared and player 1 hit, add 0%
-        //if player 1 blocked, add 20%
-        //if player 1 wiffed, add 40%
-        //if player 1 didn't punch, add 80%
 
-        //same for player 2
+        //if no one punched, add 50% suspicion
+        if(choice == 0){
+            suspicion += 50;
+        }
+        //if scoring f1 on a good hit
+        else if(choice == 1 && fighter == 0){
+            suspicion += 0;
+        }
+        //if scoring f2 on a bad hit
+        else if(choice == 2 && fighter == 0){
+            suspicion += 10;
+        }
+        //if scoreing f2 on a good hit
+        else if(choice == 3 && fighter == 1){
+            suspicion += 0;
+        }
+        //if scoring fighter 2 on a bad hit
+        else if(choice == 3 && fighter == 1){
+            suspicion += 0;
+        }
+        //if making a false score
+        else{
+            suspicion += 50
+        }
 
         //update sus meter
         UpdateSusMeter();
