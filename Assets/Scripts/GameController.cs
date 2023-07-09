@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
 
     public SoundPlayer soundPlayer;
     [SerializeField] private SoundClip winSound, loseSound;
-    public UnityEngine.UI.Button WinButton, LoseButton;
+    public UnityEngine.UI.Button WinButton, WinGameButton, LoseButton;
 
     //are the fighters taking an action
     private bool inAction;
@@ -291,7 +291,7 @@ public class GameController : MonoBehaviour
     {
         print("Win Game");
         WinWithoutNextMenu.GetComponent<WinLoseScreen>().showWinPanel();
-        EventSystem.current.SetSelectedGameObject(WinButton.gameObject);
+        EventSystem.current.SetSelectedGameObject(WinGameButton.gameObject);
         begun = false;
         soundPlayer.PlaySound(winSound);
         // show win dialog with return to menu button
