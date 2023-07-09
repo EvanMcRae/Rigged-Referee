@@ -279,7 +279,7 @@ public class GameController : MonoBehaviour
         fighterTwo = GameObject.Instantiate(fighterTwoPrefabs[stage], new Vector3(5.0f, -3.2f, 0f), Quaternion.identity);
 
         // TODO have different times per stage?
-        timer.timeLeft = 60f;
+        timer.timeLeft = 180f;
         timer.updateTimer(timer.timeLeft - 1);
         
         stageLabel.text = (stage+1) + "";
