@@ -35,12 +35,6 @@ public class BoxerMove : MonoBehaviour
         float RotateSpeed = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, GameController.instance.fightPositions[boxerNumber].targetLocations[targetIndex].position, speed * Time.deltaTime);
 
-        //if (Vector3.Magnitude(targetDirection) > .1)
-        //{
-        //    targetDirection.y = 0;
-        //    transform.rotation = Quaternion.LookRotation(targetDirection, Vector3.up);
-        //}
-
         if (Vector2.Distance(transform.position, GameController.instance.fightPositions[boxerNumber].targetLocations[targetIndex].position) < .05f)
         {
             if (waitTime <= 0)
@@ -56,6 +50,15 @@ public class BoxerMove : MonoBehaviour
             {
                 waitTime -= Time.deltaTime;
             }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Boxer2")
+        {
+            print("boxers are close");
+            GameController.instance.TakeAction();
         }
     }
 

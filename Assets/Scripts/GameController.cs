@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TakeAction();
+        //TakeAction(); //switching to take action when they get close
 
         if(Input.GetButtonDown("Fire1")){
             AwardScore(0);
@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void TakeAction(){
+    public void TakeAction(){
         if(!inAction){
             inAction = true;
             StartCoroutine(DecideAction());
