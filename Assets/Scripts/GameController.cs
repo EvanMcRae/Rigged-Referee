@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public int stage = 0;
     [SerializeField] private Text stageLabel;
     [SerializeField] private Timer timer;
+    [SerializeField] private Countdown countdown;
     [SerializeField] private GameObject[] fighterOnePrefabs, fighterTwoPrefabs;
     public FightPositions[] fightPositions;
     private GameObject fighterOne, fighterTwo;
@@ -284,7 +285,7 @@ public class GameController : MonoBehaviour
         stageLabel.text = (stage+1) + "";
         soundPlayer.PlaySound(matchStart);
 
-        // show animated 3-2-1 countdown text in the middle of the screen
+        countdown.StartCountdown();
 
         yield return new WaitForSeconds(3.0f);
         stage++;
