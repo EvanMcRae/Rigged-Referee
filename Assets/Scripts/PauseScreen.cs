@@ -71,7 +71,7 @@ public class PauseScreen : MonoBehaviour
 
     public void unPause()
     {
-        soundPlayer.PlaySound(click);
+        soundPlayer.PlaySound(click, 0.5f);
         AudioSource[] sources = FindObjectsOfType<AudioSource>();
         paused = false;
         Time.timeScale = 1;
@@ -92,7 +92,7 @@ public class PauseScreen : MonoBehaviour
 
     public void QuitToTitle()
     {
-        soundPlayer.PlaySound(click);
+        soundPlayer.PlaySound(click, 0.5f);
         StartCoroutine(BackToMenu());
     }
 

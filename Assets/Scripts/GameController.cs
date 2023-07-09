@@ -95,7 +95,7 @@ public class GameController : MonoBehaviour
         //fighter 1 gets blocked
         else if(choice == 2){
             fighterOne.GetComponent<BoxerMove>().Punch();
-            //make player two block//maybe just have them stand?
+            fighterTwo.GetComponent<BoxerMove>().Whiff();
         }
         //fighter 2 lands hit
         else if(choice == 3){
@@ -104,7 +104,7 @@ public class GameController : MonoBehaviour
         }
         //fighter 2 gets blocked
         else if(choice == 4){
-            //make f1 block
+            fighterOne.GetComponent<BoxerMove>().Whiff();
             fighterTwo.GetComponent<BoxerMove>().Punch();
         }
         //idle, but probably won't need to be used

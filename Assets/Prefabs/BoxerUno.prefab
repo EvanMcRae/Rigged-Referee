@@ -116,6 +116,7 @@ MonoBehaviour:
   getup: {fileID: 11400000, guid: 7844d5712945b304ba2b2025d5247827, type: 2}
   dash: {fileID: 11400000, guid: 729e0320cba7eee4db89089b4eb92021, type: 2}
   duck: {fileID: 11400000, guid: 1764ee754d62bff439fdf2697ef5bd20, type: 2}
+  whiff: {fileID: 11400000, guid: 6c8355dfdb9fd8740819961f628162ce, type: 2}
   anim: {fileID: 967500863978447348}
 --- !u!114 &6368531870329774075
 MonoBehaviour:

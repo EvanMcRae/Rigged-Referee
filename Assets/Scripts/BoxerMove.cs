@@ -15,7 +15,7 @@ public class BoxerMove : MonoBehaviour
     private float waitTime;
 
     [SerializeField] private SoundPlayer soundPlayer;
-    [SerializeField] private SoundClip step, jump, punch, hurt, knockout, getup, dash, duck;
+    [SerializeField] private SoundPlayable punch, hurt, whiff;
     [SerializeField] private Animator anim;
 
     // Start is called before the first frame update
@@ -133,12 +133,12 @@ public class BoxerMove : MonoBehaviour
 
 
     // }
-    //character gets into a low evasive stance, optional and probably will not be used
-    public void Duck()
-    {
-        anim.SetTrigger("duck");
-        soundPlayer.PlaySound(duck);
-    }
+    // //character gets into a low evasive stance, optional and probably will not be used
+    // public void Duck()
+    // {
+    //     anim.SetTrigger("duck");
+    //     soundPlayer.PlaySound(duck);
+    // }
     //character punches to try to hit the opponent
     //should be created so a message gets sent to fight parser determining if the attack is hit or block, or if it's a wiff
     public void Punch()
@@ -146,12 +146,12 @@ public class BoxerMove : MonoBehaviour
         anim.SetTrigger("punch");
         soundPlayer.PlaySound(punch);
     }
-    public void Dash(string newDir)
-    {
-        // ChangeDir(newDir);
-        anim.SetTrigger("dash");
-        soundPlayer.PlaySound(dash);
-    }
+    // public void Dash(string newDir)
+    // {
+    //     // ChangeDir(newDir);
+    //     anim.SetTrigger("dash");
+    //     soundPlayer.PlaySound(dash);
+    // }
     //the fighter gets hit by an attack, cancels the previous action they were taking
     public void Hurt()
     {
@@ -160,16 +160,23 @@ public class BoxerMove : MonoBehaviour
         soundPlayer.PlaySound(hurt);
         GetComponent<SimpleFlash>().Flash(2, 8, true);
     }
-    public void KnockOut()
+
+    public void Whiff()
     {
-        anim.SetTrigger("knockout");
-        soundPlayer.PlaySound(knockout);
+        // add knockback, hit flash, etc idk
+        anim.SetTrigger("hurt");
+        soundPlayer.PlaySound(whiff);
     }
-    public void GetUp()
-    {
-        anim.SetTrigger("getup");
-        soundPlayer.PlaySound(getup);
-    }
+    // public void KnockOut()
+    // {
+    //     anim.SetTrigger("knockout");
+    //     soundPlayer.PlaySound(knockout);
+    // }
+    // public void GetUp()
+    // {
+    //     anim.SetTrigger("getup");
+    //     soundPlayer.PlaySound(getup);
+    // }
 
     IEnumerator ResetTime()
     {

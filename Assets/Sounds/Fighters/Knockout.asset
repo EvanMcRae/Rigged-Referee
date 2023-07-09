@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f35be989a351ee4983eb0f562df9955, type: 3}
   m_Name: Knockout
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: cd81bf0362f0fe14fa7551b5c472e3ec, type: 3}

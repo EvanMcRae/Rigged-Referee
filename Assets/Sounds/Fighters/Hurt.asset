@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f35be989a351ee4983eb0f562df9955, type: 3}
+  m_Script: {fileID: 11500000, guid: 325305bad65deb543a34de222f12b571, type: 3}
   m_Name: Hurt
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clips:
+  - {fileID: 8300000, guid: d755384aeb068e344baf900fd2af7a74, type: 3}
+  - {fileID: 8300000, guid: 6524542e04d0f0343a21809d7b6ed4b6, type: 3}
+  - {fileID: 8300000, guid: c3f460c5ff713324fbdd6838aee8e93c, type: 3}
+  - {fileID: 8300000, guid: a5687605e1c1e5d47a1e20382c8374e8, type: 3}
+  - {fileID: 8300000, guid: cd81bf0362f0fe14fa7551b5c472e3ec, type: 3}

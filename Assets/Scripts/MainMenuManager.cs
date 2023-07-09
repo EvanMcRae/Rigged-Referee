@@ -48,7 +48,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if (!ChangeScene.changingScene && !quit && !inCredits && !inInstructions)
         {
-            soundPlayer.PlaySound(click);
+            soundPlayer.PlaySound(click, 0.5f);
             AudioManager.instance.FadeOutCurrent();
             ChangeScene.LoadScene("Arena");
             //CanvasManager.ShowHUD();
@@ -60,7 +60,7 @@ public class MainMenuManager : MonoBehaviour
         if (!ChangeScene.changingScene && !quit && !inCredits && !inInstructions)
         {
             quit = true;
-            soundPlayer.PlaySound(click);
+            soundPlayer.PlaySound(click, 0.5f);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             StartCoroutine(QuitRoutine());
@@ -71,7 +71,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if (!ChangeScene.changingScene && !quit && !inCredits && !inInstructions)
         {
-            soundPlayer.PlaySound(click);
+            soundPlayer.PlaySound(click, 0.5f);
             creditsPanel.SetActive(true);
             inCredits = true;
         }
@@ -81,7 +81,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if (!ChangeScene.changingScene && !quit && !inCredits && !inInstructions)
         {
-            soundPlayer.PlaySound(click);
+            soundPlayer.PlaySound(click, 0.5f);
             instructionsPanel.SetActive(true);
             inInstructions = true;
         }
@@ -89,7 +89,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        soundPlayer.PlaySound(click);
+        soundPlayer.PlaySound(click, 0.5f);
 
         if (inCredits)
         {
