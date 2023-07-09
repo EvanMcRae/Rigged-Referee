@@ -45,6 +45,18 @@ public class WinLoseScreen : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
+    public void clickNext()
+    {
+        GameController.instance.nextStage();
+
+        winLoseMenuGroup.alpha = 0;
+        winLoseMenuGroup.blocksRaycasts = false;
+        winLoseMenuGroup.interactable = false;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     public void clickMainMenu()
     {
         pauseRef.GetComponent<PauseScreen>().QuitToTitle();
