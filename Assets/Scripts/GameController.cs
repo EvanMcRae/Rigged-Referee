@@ -310,6 +310,8 @@ public class GameController : MonoBehaviour
     IEnumerator PrepareStage()
     {
         // reset from previous stage, if applicable
+        WinMenu.GetComponent<WinLoseScreen>().hide();
+
         if (stage > 0)
         {
             Crossfade.FadeStart();
