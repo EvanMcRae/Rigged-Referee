@@ -71,6 +71,12 @@ public class BoxerMove : MonoBehaviour
         anim.SetTrigger("idle");
     }
 
+    public void Walk()
+    {
+        anim.SetTrigger("walk");
+    }
+
+
     // public void Walk(string newDir)
     // {
     //     anim.SetTrigger("walk");
@@ -180,6 +186,7 @@ public class BoxerMove : MonoBehaviour
 
     IEnumerator ResetTime()
     {
+        Walk();
         yield return new WaitForSeconds(0.5f);
         waitTime = startWaitTime;
     }
