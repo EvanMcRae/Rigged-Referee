@@ -74,27 +74,34 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         choice = Random.Range(1, 5);
-
+        
+        //fighter 1 lands hit
         if(choice == 1){
-            //fighter 1 hit
+            
             fighterOne.GetComponent<FighterController>().Punch();
             fighterTwo.GetComponent<FighterController>().Hurt();
         }
+        //fighter 1 gets blocked
         else if(choice == 2){
-            //fighter 1 blocked
             fighterOne.GetComponent<FighterController>().Punch();
+            //make player two block//maybe just have them stand?
         }
+        //fighter 2 lands hit
         else if(choice == 3){
-            //f2 hit
+
             fighterOne.GetComponent<FighterController>().Hurt();
             fighterTwo.GetComponent<FighterController>().Punch();
         }
+        //fighter 2 gets blocked
         else if(choice == 4){
-            //f2 blocked
+            //make f1 block
             fighterTwo.GetComponent<FighterController>().Punch();
         }
+        //idle, but probably won't need to be used
         else{
             //idle
+            fighterOne.GetComponent<FighterController>().Stand();
+            fighterTwo.GetComponent<FighterController>().Stand();
         }
 
         yield return new WaitForSeconds(2f);
@@ -122,6 +129,9 @@ public class GameController : MonoBehaviour
         //if suspicous
         //add suspicion
         CheckSusAction(fighter);
+
+        //ensure that single action can only be called out once
+        choice = 0;
     }
 
     //check if the player's current action is suspicious, add apropriate suspicion if so
