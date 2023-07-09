@@ -480,8 +480,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_SortingOrder: -2
+  m_Sprite: {fileID: 21300000, guid: f8b15ed2b89bf5f44b7aa2ca32081ec4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -500,9 +500,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591638466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.3, y: 0.48, z: 0}
+  m_LocalScale: {x: 0.47, y: 0.47, z: 0.94}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 667560485}
   m_Father: {fileID: 0}
@@ -1678,7 +1678,7 @@ PrefabInstance:
     - target: {fileID: 4999745401365414928, guid: 85b3b313b5b7f964f84c96becb8f647d, type: 3}
       propertyPath: WinWithoutNextMenu
       value: 
-      objectReference: {fileID: 867850749}
+      objectReference: {fileID: 544849266}
     - target: {fileID: 5962287167695194052, guid: 85b3b313b5b7f964f84c96becb8f647d, type: 3}
       propertyPath: targetLocations.Array.data[0]
       value: 

@@ -267,6 +267,7 @@ public class GameController : MonoBehaviour
 
     void LoseGame()
     {
+        if (!begun) return;
         print("Lose Game");
         begun = false;
         LoseMenu.GetComponent<WinLoseScreen>().showLosePanel();
@@ -279,6 +280,7 @@ public class GameController : MonoBehaviour
 
     void WinStage()
     {
+        if (!begun) return;
         print("Win Stage");
         begun = false;
         WinMenu.GetComponent<WinLoseScreen>().showWinPanel();
@@ -290,6 +292,7 @@ public class GameController : MonoBehaviour
 
     void WinGame()
     {
+        if (!begun) return;
         print("Win Game");
         begun = false;
         WinWithoutNextMenu.GetComponent<WinLoseScreen>().showWinPanel();
@@ -310,6 +313,8 @@ public class GameController : MonoBehaviour
     IEnumerator PrepareStage()
     {
         // reset from previous stage, if applicable
+        WinMenu.GetComponent<WinLoseScreen>().hide();
+
         if (stage > 0)
         {
             Crossfade.FadeStart();
