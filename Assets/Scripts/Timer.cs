@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
                 if(finalCheck == 0)
                 {
                     print("timer hit ZERO");
-                    GameController.instance.CheckVictory();
+                    GameController.instance.CheckVictoryTimedOut();
                     finalCheck++;
                 }
             }

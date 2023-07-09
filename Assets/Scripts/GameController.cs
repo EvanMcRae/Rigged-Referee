@@ -230,6 +230,41 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void CheckVictoryTimedOut()
+    {
+        print("TIMED OUT, and checking for victory");
+        if (suspicion >= susToLose)
+        {
+            LoseGame();
+        }
+        else if (fighterOneScore >= scoreToWin)
+        {
+            if (stage == 3)
+                WinGame();
+            else
+                WinStage();
+        }
+        else if (fighterTwoScore >= scoreToWin)
+        {
+            LoseGame();
+        }
+        else if(fighterTwoScore > fighterOneScore)
+        {
+            LoseGame();
+        }
+        else if(fighterTwoScore < fighterOneScore)
+        {
+            if (stage == 3)
+                WinGame();
+            else
+                WinStage();
+        }
+        else if(fighterTwoScore == fighterOneScore)
+        {
+            LoseGame();
+        }
+    }
+
     void LoseGame()
     {
         print("Lose Game");
