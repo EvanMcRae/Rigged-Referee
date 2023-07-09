@@ -152,7 +152,7 @@ public class GameController : MonoBehaviour
         }
         //if making a false score
         else{
-            suspicion += 50
+            suspicion += 50;
         }
 
         //update sus meter
