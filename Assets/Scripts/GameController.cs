@@ -71,6 +71,7 @@ public class GameController : MonoBehaviour
     }
 
     IEnumerator DecideAction(){
+        //two second wait in between punches
         yield return new WaitForSeconds(2f);
 
         choice = Random.Range(1, 5);
@@ -104,11 +105,16 @@ public class GameController : MonoBehaviour
             fighterTwo.GetComponent<FighterController>().Stand();
         }
 
+        //each punch gives two seconds to react
         yield return new WaitForSeconds(2f);
-        //set both idle
+        //set both idle, mostly to make animations tranitions smoother
         fighterOne.GetComponent<FighterController>().Stand();
         fighterTwo.GetComponent<FighterController>().Stand();
         yield return new WaitForSeconds(.067f);
+
+        //if fighter wasn't awarded points they desterve, raise suspicion
+        CheckSusInaction();
+
         //resetchoice
         choice = 0;
         inAction = false;
@@ -120,26 +126,25 @@ public class GameController : MonoBehaviour
         if(fighter == 0){
             fighterOneScore += 1;
             fighterOneText.text = string.Format("{0:000}", fighterOneScore);
+
+            //TODO also rig up ref holding flag here
         }
         //if f2 button
         else if(fighter == 1){
             fighterTwoScore += 1;
             fighterTwoText.text = string.Format("{0:000}", fighterTwoScore);
+
+            //TODO here as well
         }
-        //if suspicous
-        //add suspicion
+        //if suspicous, add suspicion
         CheckSusAction(fighter);
 
         //ensure that single action can only be called out once
         choice = 0;
     }
 
-    //check if the player's current action is suspicious, add apropriate suspicion if so
+    //check if the player's current action is suspicious, add apropriate suspicion if so //might want to change values
     void CheckSusAction(int fighter){
-        //make if statements for fighters
-        
-        //if player 1 awared and player 1 hit, add 0%
-
         //if no one punched, add 50% suspicion
         if(choice == 0){
             suspicion += 50;
@@ -179,12 +184,21 @@ public class GameController : MonoBehaviour
         //if [losing?] fighter
         //suspicion += 20%
 
+        //if fighter 1 hit
+        if(choice == 1){
+
+        }
+        //if fighter 2 hit and no points were awarded
+        if(choice == 3){
+            suspicion += 20;
+        }
+
         UpdateSusMeter();
 
         CheckVictory();
     }
 
-    //updates the suspicion meter//TODO TEST TO SEE IF DONE CORRECTLY
+    //updates the suspicion meter
     void UpdateSusMeter(){
         susMeter.fillAmount = suspicion / (float)susToLose;
     }
