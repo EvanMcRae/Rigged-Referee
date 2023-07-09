@@ -268,6 +268,7 @@ public class GameController : MonoBehaviour
     void LoseGame()
     {
         print("Lose Game");
+        begun = false;
         LoseMenu.GetComponent<WinLoseScreen>().showLosePanel();
         EventSystem.current.SetSelectedGameObject(LoseButton.gameObject);
         begun = false;
@@ -279,6 +280,7 @@ public class GameController : MonoBehaviour
     void WinStage()
     {
         print("Win Stage");
+        begun = false;
         WinMenu.GetComponent<WinLoseScreen>().showWinPanel();
         EventSystem.current.SetSelectedGameObject(WinButton.gameObject);
         begun = false;
@@ -289,6 +291,7 @@ public class GameController : MonoBehaviour
     void WinGame()
     {
         print("Win Game");
+        begun = false;
         WinWithoutNextMenu.GetComponent<WinLoseScreen>().showWinPanel();
         EventSystem.current.SetSelectedGameObject(WinGameButton.gameObject);
         begun = false;
