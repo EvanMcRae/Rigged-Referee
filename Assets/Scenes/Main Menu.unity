@@ -2302,7 +2302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Connor
+  m_text: 'Connor Sheridan
 
     Evan McRae
 
@@ -3225,7 +3225,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Ky "Lupidcorvid" DeSilva
 
-    Kevin (Dasher)'
+    Kevin Myers'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d669f81e1a83e0441b9c038c7a28f2ba, type: 2}
   m_sharedMaterial: {fileID: 7035181827977515771, guid: d669f81e1a83e0441b9c038c7a28f2ba, type: 2}
