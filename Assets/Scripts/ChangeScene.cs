@@ -10,43 +10,13 @@ public class ChangeScene : MonoBehaviour
 {
     public string scene;
     public string spawn;
-    private Animator crossfade;
     public static bool changingScene = false;
     public static Action clearCollisions, clearInteractables;
 
-    public static Action changeScene;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        crossfade = GameObject.Find("Crossfade").GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            StartCoroutine(LoadNextScene());
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!changingScene)
-        {
-            StartCoroutine(LoadNextScene());
-        }
-    }
     IEnumerator LoadNextScene()
     {
         changingScene = true;
-        crossfade.SetTrigger("start");
+        Crossfade.FadeStart();
         yield return new WaitForSeconds(1f);
         DisableMenuMusic();
         EventSystem eventSystem = GameObject.FindObjectOfType<EventSystem>();
@@ -58,17 +28,9 @@ public class ChangeScene : MonoBehaviour
         changingScene = false;
     }
 
-    public static void ChangeSceneMinimal(string scene)
+    public static void LoadScene(string scene)
     {
-        changingScene = true;
-        EventSystem eventSystem = GameObject.FindObjectOfType<EventSystem>();
-        GameObject.Destroy(eventSystem?.gameObject);
-        DisableMenuMusic();
-        SceneHelper.LoadScene(scene);
-        clearCollisions?.Invoke();
-        clearInteractables?.Invoke();
-        //DialogController.closedAnimator = true;
-        changingScene = false;
+        MainMenuManager.main.StartCoroutine(LoadSceneEnum(scene));
     }
 
     static IEnumerator LoadSceneEnum(string scene)

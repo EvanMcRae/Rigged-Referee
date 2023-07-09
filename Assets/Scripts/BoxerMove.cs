@@ -30,7 +30,7 @@ public class BoxerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(canMove == true)
+        if(canMove && GameController.begun)
         {
             Vector2 targetDirection = GameController.instance.fightPositions[boxerNumber].targetLocations[targetIndex].position - transform.position;
 
