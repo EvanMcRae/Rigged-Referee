@@ -73,6 +73,8 @@ public class GameController : MonoBehaviour
 
     IEnumerator DecideAction(){
         //two second wait in between punches
+        fighterOne.GetComponent<BoxerMove>().canMove = false;
+        fighterTwo.GetComponent<BoxerMove>().canMove = false;
         yield return new WaitForSeconds(2f);
 
         choice = Random.Range(1, 5);
@@ -117,6 +119,8 @@ public class GameController : MonoBehaviour
         //resetchoice
         choice = 0;
         inAction = false;
+        fighterOne.GetComponent<BoxerMove>().canMove = true;
+        fighterTwo.GetComponent<BoxerMove>().canMove = true;
     }
 
     //awards points to a figther based on the player's command

@@ -30,25 +30,28 @@ public class BoxerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 targetDirection = GameController.instance.fightPositions[boxerNumber].targetLocations[targetIndex].position - transform.position;
-
-        float RotateSpeed = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, GameController.instance.fightPositions[boxerNumber].targetLocations[targetIndex].position, speed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, GameController.instance.fightPositions[boxerNumber].targetLocations[targetIndex].position) < .05f)
+        if(canMove == true)
         {
-            if (waitTime <= 0)
+            Vector2 targetDirection = GameController.instance.fightPositions[boxerNumber].targetLocations[targetIndex].position - transform.position;
+
+            float RotateSpeed = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, GameController.instance.fightPositions[boxerNumber].targetLocations[targetIndex].position, speed * Time.deltaTime);
+
+            if (Vector2.Distance(transform.position, GameController.instance.fightPositions[boxerNumber].targetLocations[targetIndex].position) < .05f)
             {
-                targetIndex += 1;
-                if (targetIndex == GameController.instance.fightPositions[boxerNumber].targetLocations.Length)
+                if (waitTime <= 0)
                 {
-                    targetIndex = 0;
+                    targetIndex += 1;
+                    if (targetIndex == GameController.instance.fightPositions[boxerNumber].targetLocations.Length)
+                    {
+                        targetIndex = 0;
+                    }
+                    StartCoroutine(ResetTime());
                 }
-                StartCoroutine(ResetTime());
-            }
-            else
-            {
-                waitTime -= Time.deltaTime;
+                else
+                {
+                    waitTime -= Time.deltaTime;
+                }
             }
         }
     }
