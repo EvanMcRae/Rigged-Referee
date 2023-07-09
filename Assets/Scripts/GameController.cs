@@ -165,7 +165,7 @@ public class GameController : MonoBehaviour
         else if(choice == 3 && fighter == 1){
             suspicion += 0;
         }
-        //if making a false score
+        //if making a false score entirely
         else{
             suspicion += 50;
         }
