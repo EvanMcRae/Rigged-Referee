@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private Text stageLabel;
     [SerializeField] private Timer timer;
     [SerializeField] private GameObject[] fighterOnePrefabs, fighterTwoPrefabs;
+    public FightPositions[] fightPositions;
     private GameObject fighterOne, fighterTwo;
 
     public int fighterOneScore;
@@ -38,7 +39,7 @@ public class GameController : MonoBehaviour
         //susMeter = GameObject.Find("Canvas/SuspicionBar/SuspicionBarFill").GetComponent<Image>();
         //timer = GameObject.Find("Canvas/Timer").GetComponent<Timer>();
         //stageLabel = GameObject.Find("Canvas/StageLabel").GetComponent<Text>();
-
+        instance = this;
         inAction = false;
         nextStage();
     }
@@ -78,38 +79,36 @@ public class GameController : MonoBehaviour
         
         //fighter 1 lands hit
         if(choice == 1){
-            
-            fighterOne.GetComponent<FighterController>().Punch();
-            fighterTwo.GetComponent<FighterController>().Hurt();
+            fighterOne.GetComponent<BoxerMove>().Punch();
+            fighterTwo.GetComponent<BoxerMove>().Hurt();
         }
         //fighter 1 gets blocked
         else if(choice == 2){
-            fighterOne.GetComponent<FighterController>().Punch();
+            fighterOne.GetComponent<BoxerMove>().Punch();
             //make player two block//maybe just have them stand?
         }
         //fighter 2 lands hit
         else if(choice == 3){
-
-            fighterOne.GetComponent<FighterController>().Hurt();
-            fighterTwo.GetComponent<FighterController>().Punch();
+            fighterOne.GetComponent<BoxerMove>().Hurt();
+            fighterTwo.GetComponent<BoxerMove>().Punch();
         }
         //fighter 2 gets blocked
         else if(choice == 4){
             //make f1 block
-            fighterTwo.GetComponent<FighterController>().Punch();
+            fighterTwo.GetComponent<BoxerMove>().Punch();
         }
         //idle, but probably won't need to be used
         else{
             //idle
-            fighterOne.GetComponent<FighterController>().Stand();
-            fighterTwo.GetComponent<FighterController>().Stand();
+            fighterOne.GetComponent<BoxerMove>().Stand();
+            fighterTwo.GetComponent<BoxerMove>().Stand();
         }
 
         //each punch gives two seconds to react
         yield return new WaitForSeconds(2f);
         //set both idle, mostly to make animations tranitions smoother
-        fighterOne.GetComponent<FighterController>().Stand();
-        fighterTwo.GetComponent<FighterController>().Stand();
+        fighterOne.GetComponent<BoxerMove>().Stand();
+        fighterTwo.GetComponent<BoxerMove>().Stand();
         yield return new WaitForSeconds(.067f);
 
         //if fighter wasn't awarded points they desterve, raise suspicion
