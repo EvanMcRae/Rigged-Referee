@@ -60,10 +60,16 @@ public class MainMenuManager : MonoBehaviour
         // show credits panel and hide the other stuff
     }
 
-    public void ReturnFromCredits()
+    public void ShowInstructions()
     {
         soundPlayer.PlaySound(click);
-        // hide credits panel and show the other stuff
+        // show instructions panel and hide the other stuff
+    }
+
+    public void ReturnToMainMenu()
+    {
+        soundPlayer.PlaySound(click);
+        // hide credits/instructions panel and show the other stuff
     }
 
     IEnumerator QuitRoutine()
