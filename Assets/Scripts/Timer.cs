@@ -8,6 +8,8 @@ public class Timer : MonoBehaviour
     public float timeLeft;
     [SerializeField] private Text timerText;
 
+    int finalCheck = 0;
+
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +23,12 @@ public class Timer : MonoBehaviour
             else
             {
                 timeLeft = 0;
+                if(finalCheck == 0)
+                {
+                    print("timer hit ZERO");
+                    GameController.instance.CheckVictory();
+                    finalCheck++;
+                }
             }
         }
     }

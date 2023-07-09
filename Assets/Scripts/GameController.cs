@@ -50,9 +50,11 @@ public class GameController : MonoBehaviour
         //TakeAction(); //switching to take action when they get close
 
         if(Input.GetButtonDown("Fire1")){
+            print("awarded fighter one a point");
             AwardScore(0);
         }
         else if(Input.GetButtonDown("Fire2")){
+            print("awarded fighter two a point");
             AwardScore(1);
         }
         UpdateSusMeter();
@@ -207,7 +209,8 @@ public class GameController : MonoBehaviour
     }
 
     //decide if the player won or lost
-    void CheckVictory(){
+    public void CheckVictory(){
+        print("checking for victory");
         if(suspicion >= susToLose){
             LoseGame();
         }
@@ -224,6 +227,7 @@ public class GameController : MonoBehaviour
 
     void LoseGame()
     {
+        print("Lose Game");
         begun = false;
         soundPlayer.PlaySound(loseSound);
         // show lose dialog with return to menu button
@@ -231,6 +235,7 @@ public class GameController : MonoBehaviour
 
     void WinStage()
     {
+        print("Win Stage");
         begun = false;
         soundPlayer.PlaySound(matchEnd);
         // show win dialog with advance to next stage button
@@ -238,6 +243,7 @@ public class GameController : MonoBehaviour
 
     void WinGame()
     {
+        print("Win Game");
         begun = false;
         soundPlayer.PlaySound(winSound);
         // show win dialog with return to menu button
@@ -245,6 +251,7 @@ public class GameController : MonoBehaviour
 
     public void nextStage()
     {
+        print("next stage!");
         begun = false;
         if (stage < 3)
             StartCoroutine(PrepareStage());
