@@ -606,6 +606,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 603017179443076867, guid: 92a8dab19e401604b90f77761c540dd5, type: 3}
   m_PrefabInstance: {fileID: 667560483}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &730681497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3647217591371499494, guid: bec02ac1296cab94cb6eb3129d2944f9, type: 3}
+  m_PrefabInstance: {fileID: 9210400246396953874}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179741692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b967f6e6976b324da6df2397eb48878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &814568921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,6 +2006,18 @@ PrefabInstance:
       propertyPath: soundPlayer
       value: 
       objectReference: {fileID: 42715952}
+    - target: {fileID: 3738475184062844325, guid: bec02ac1296cab94cb6eb3129d2944f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 730681497}
+    - target: {fileID: 3738475184062844325, guid: bec02ac1296cab94cb6eb3129d2944f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: clickNext
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738475184062844325, guid: bec02ac1296cab94cb6eb3129d2944f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WinLoseScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4338963509152402966, guid: bec02ac1296cab94cb6eb3129d2944f9, type: 3}
       propertyPath: soundPlayer
       value: 
