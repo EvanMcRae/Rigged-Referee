@@ -18,6 +18,7 @@ public class BoxerMove : MonoBehaviour
     [SerializeField] private SoundPlayer soundPlayer;
     [SerializeField] private SoundPlayable punch, hurt, whiff;
     [SerializeField] private Animator anim;
+    [SerializeField] private GameObject[] punchEffects;
 
     // Start is called before the first frame update
     void Start()
@@ -171,6 +172,7 @@ public class BoxerMove : MonoBehaviour
         // add knockback, hit flash, etc idk
         anim.SetTrigger("hurt");
         soundPlayer.PlaySound(hurt);
+        GameObject.Instantiate(punchEffects[Random.Range(0,2)], transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         GetComponent<SimpleFlash>().Flash(2, 8, true);
     }
 

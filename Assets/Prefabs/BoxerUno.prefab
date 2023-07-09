@@ -108,16 +108,13 @@ MonoBehaviour:
   boxerNumber: 0
   startWaitTime: 2
   soundPlayer: {fileID: 3854432808099478599}
-  step: {fileID: 11400000, guid: 4f699b80422ee264cac645b4d91fc10b, type: 2}
-  jump: {fileID: 11400000, guid: 826bd1976ad1fe0449e22d328966eee4, type: 2}
   punch: {fileID: 11400000, guid: 8b4661cb343a9a048b951f8d6b194c28, type: 2}
   hurt: {fileID: 11400000, guid: 3ae61e7f1e4f4154486def325ea81174, type: 2}
-  knockout: {fileID: 11400000, guid: 9c29ab6ce55235140bbca6a8edc566a9, type: 2}
-  getup: {fileID: 11400000, guid: 7844d5712945b304ba2b2025d5247827, type: 2}
-  dash: {fileID: 11400000, guid: 729e0320cba7eee4db89089b4eb92021, type: 2}
-  duck: {fileID: 11400000, guid: 1764ee754d62bff439fdf2697ef5bd20, type: 2}
   whiff: {fileID: 11400000, guid: 6c8355dfdb9fd8740819961f628162ce, type: 2}
   anim: {fileID: 967500863978447348}
+  punchEffects:
+  - {fileID: 2475621583708667058, guid: c5b96a7ace63e2a448efeff9f7e05c66, type: 3}
+  - {fileID: 2297547607879798090, guid: 56b37ca87724eec43ad2c72c5268eb3f, type: 3}
 --- !u!114 &6368531870329774075
 MonoBehaviour:
   m_ObjectHideFlags: 0
