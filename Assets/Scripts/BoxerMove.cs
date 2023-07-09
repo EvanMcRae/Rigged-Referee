@@ -13,6 +13,7 @@ public class BoxerMove : MonoBehaviour
     public float startWaitTime;
 
     private float waitTime;
+    private bool firstWalked = false;
 
     [SerializeField] private SoundPlayer soundPlayer;
     [SerializeField] private SoundPlayable punch, hurt, whiff;
@@ -30,6 +31,11 @@ public class BoxerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(canMove && GameController.begun && !firstWalked)
+        {
+            Walk();
+            firstWalked = true;
+        }
         if(canMove && GameController.begun)
         {
             Vector2 targetDirection = GameController.instance.fightPositions[boxerNumber].targetLocations[targetIndex].position - transform.position;
@@ -50,6 +56,7 @@ public class BoxerMove : MonoBehaviour
                 }
                 else
                 {
+                    anim.SetTrigger("idle");
                     waitTime -= Time.deltaTime;
                 }
             }
