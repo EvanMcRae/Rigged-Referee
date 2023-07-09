@@ -329,8 +329,8 @@ public class GameController : MonoBehaviour
             Crossfade.FadeEnd();
         }
 
-        fighterOne = GameObject.Instantiate(fighterOnePrefabs[stage], new Vector3(-5.0f, -3.2f, 0f), Quaternion.identity);
-        fighterTwo = GameObject.Instantiate(fighterTwoPrefabs[stage], new Vector3(5.0f, -3.2f, 0f), Quaternion.identity);
+        fighterOne = GameObject.Instantiate(fighterOnePrefabs[stage], new Vector3(-5.0f, -1.8f, 0f), Quaternion.identity);
+        fighterTwo = GameObject.Instantiate(fighterTwoPrefabs[stage], new Vector3(5.0f, -1.8f, 0f), Quaternion.identity);
 
         // TODO have different times per stage?
         timer.timeLeft = 180f;
