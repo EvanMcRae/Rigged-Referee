@@ -69,11 +69,15 @@ public class PauseScreen : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void unPause()
+    public void ClickUnpause()
     {
         soundPlayer.PlaySound(click, 0.5f);
+        unPause();
+    }
+    public void unPause()
+    {
         AudioSource[] sources = FindObjectsOfType<AudioSource>();
-        paused = false;
+        Invoke("SetUnpaused", 0.1f);
         Time.timeScale = 1;
         foreach (AudioSource source in sources)
         {
@@ -88,6 +92,11 @@ public class PauseScreen : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void SetUnpaused()
+    {
+        paused = false;
     }
 
     public void QuitToTitle()
