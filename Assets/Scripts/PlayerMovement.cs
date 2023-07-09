@@ -13,17 +13,39 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Idle();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
+        if (Input.GetButtonDown("Fire1"))
+            {
+                FlagLeft();
+            }
+        else if (Input.GetButtonDown("Fire2"))
+            {
+                FlagRight();
+            }
     }
 
     void MovePlayer(){
         movementX = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(movementX, 0f, 0f) * moveSpeed * Time.deltaTime;
+    }
+
+    public void Idle()
+    {
+        anim.SetTrigger("idle");
+    }
+
+    public void FlagLeft()
+    {
+        anim.SetTrigger("flagleft");
+    }
+
+    public void FlagRight()
+    {
+        anim.SetTrigger("flagright");
     }
 }
