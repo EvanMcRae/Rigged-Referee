@@ -40,6 +40,8 @@ public class GameController : MonoBehaviour
 
     public GameObject LoseMenu;
 
+    public GameObject WinWithoutNextMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -288,7 +290,7 @@ public class GameController : MonoBehaviour
     void WinGame()
     {
         print("Win Game");
-        WinMenu.GetComponent<WinLoseScreen>().showWinPanel();
+        WinWithoutNextMenu.GetComponent<WinLoseScreen>().showWinPanel();
         EventSystem.current.SetSelectedGameObject(WinButton.gameObject);
         begun = false;
         soundPlayer.PlaySound(winSound);
