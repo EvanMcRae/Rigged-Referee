@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    public AudioMixer musicMixer, sfxMixer, globalSfxMixer;
+    public AudioMixer musicMixer, sfxMixer;
     public AudioMixerGroup musicMixerGroup;
     public MusicClip currentSong = null;
     public GameArea currentArea;
@@ -188,18 +188,6 @@ public class AudioManager : MonoBehaviour
                 StartCoroutine(fader[0]);
             }
         }
-        
-        // sfxVolume is a float from 0.0-1.0 but we'd want 1.0 to correspond to 10dB => *10f
-        targetSFXVolume = sfxVolume*10f - Mathf.Clamp(2 * Camera.main.orthographicSize, 10, 100);
-        if (ChangeScene.changingScene)
-        {
-            actualSFXVolume = Mathf.Lerp(actualSFXVolume, -80, 0.1f);
-        }
-        else
-        {
-            actualSFXVolume = Mathf.Lerp(actualSFXVolume, targetSFXVolume, 0.1f);
-        }
-        sfxMixer.SetFloat("Volume", actualSFXVolume);
     }
 
     public void ChangeBGM(MusicClip music, float duration = 1f)
@@ -415,29 +403,6 @@ public class AudioManager : MonoBehaviour
         }
         currentSong = null;
         paused = false;
-    }
-
-    public void ApplyMixerEffect(string mixer, string effect, float value, float duration = 0)
-    {
-        AudioMixer theMixer = null;
-        switch (mixer.Trim().ToLower())
-        {
-            case "music":
-            case "bgm":
-                theMixer = musicMixer;
-                break;
-            case "sound":
-            case "sfx":
-                theMixer = sfxMixer;
-                break;
-            case "global":
-                theMixer = globalSfxMixer;
-                break;
-        }
-        if (theMixer != null) 
-            ApplyMixerEffect(theMixer, effect, value, duration);
-        else
-            Debug.LogError("Invalid mixer!");
     }
 
     public void ApplyMixerEffect(AudioMixer mixer, string effect, float value, float duration = 0)
