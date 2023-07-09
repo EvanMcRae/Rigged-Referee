@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameController : MonoBehaviour
 {
@@ -26,8 +27,9 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Image susMeter;
 
-    [SerializeField] private SoundPlayer soundPlayer;
+    public SoundPlayer soundPlayer;
     [SerializeField] private SoundClip winSound, loseSound;
+    public UnityEngine.UI.Button WinButton, LoseButton;
 
     //are the fighters taking an action
     private bool inAction;
@@ -52,22 +54,19 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //TakeAction(); //switching to take action when they get close
-
-        if(Input.GetButtonDown("Fire1")){
-            print("awarded fighter one a point");
-            AwardScore(0);
-        }
-        else if(Input.GetButtonDown("Fire2")){
-            print("awarded fighter two a point");
-            AwardScore(1);
-        }
-        UpdateSusMeter();
-
-        // TODO REMOVE - DEBUG!!
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (begun) 
         {
-            nextStage();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                print("awarded fighter one a point");
+                AwardScore(0);
+            }
+            else if (Input.GetButtonDown("Fire2"))
+            {
+                print("awarded fighter two a point");
+                AwardScore(1);
+            }
+            UpdateSusMeter();
         }
     }
 
@@ -269,8 +268,10 @@ public class GameController : MonoBehaviour
     {
         print("Lose Game");
         LoseMenu.GetComponent<WinLoseScreen>().showLosePanel();
+        EventSystem.current.SetSelectedGameObject(LoseButton.gameObject);
         begun = false;
         soundPlayer.PlaySound(loseSound);
+        AudioManager.instance.FadeOutCurrent(0.5f);
         // show lose dialog with return to menu button
     }
 
@@ -278,6 +279,7 @@ public class GameController : MonoBehaviour
     {
         print("Win Stage");
         WinMenu.GetComponent<WinLoseScreen>().showWinPanel();
+        EventSystem.current.SetSelectedGameObject(WinButton.gameObject);
         begun = false;
         soundPlayer.PlaySound(winSound);
         // show win dialog with advance to next stage button
@@ -287,6 +289,7 @@ public class GameController : MonoBehaviour
     {
         print("Win Game");
         WinMenu.GetComponent<WinLoseScreen>().showWinPanel();
+        EventSystem.current.SetSelectedGameObject(WinButton.gameObject);
         begun = false;
         soundPlayer.PlaySound(winSound);
         // show win dialog with return to menu button

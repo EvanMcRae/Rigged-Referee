@@ -7,6 +7,8 @@ public class Timer : MonoBehaviour
 {
     public float timeLeft;
     [SerializeField] private Text timerText;
+    [SerializeField] private SoundClip endCountdown;
+    private bool fiveSecs;
 
     int finalCheck = 0;
 
@@ -38,6 +40,11 @@ public class Timer : MonoBehaviour
         currentTime += 1;
         int currentMins = Mathf.FloorToInt(currentTime / 60);
         int currentSecs = Mathf.FloorToInt(currentTime % 60);
+        if (currentSecs == 5 && currentMins == 0 && !fiveSecs)
+        {
+            GameController.instance.soundPlayer.PlaySound(endCountdown);
+            fiveSecs = true;
+        }
         timerText.text = string.Format("{0:00} {1:00}", currentMins, currentSecs);
     }
 }

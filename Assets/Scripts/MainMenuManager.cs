@@ -46,7 +46,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        if (!ChangeScene.changingScene && Crossfade.over && !quit && !inCredits && !inInstructions)
+        if (!ChangeScene.changingScene && !quit && !inCredits && !inInstructions)
         {
             soundPlayer.PlaySound(click);
             AudioManager.instance.FadeOutCurrent();
@@ -57,7 +57,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void Quit()
     {
-        if (!ChangeScene.changingScene && Crossfade.over && !quit && !inCredits && !inInstructions)
+        if (!ChangeScene.changingScene && !quit && !inCredits && !inInstructions)
         {
             quit = true;
             soundPlayer.PlaySound(click);
@@ -69,7 +69,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void ShowCredits()
     {
-        if (!ChangeScene.changingScene && Crossfade.over && !quit && !inCredits && !inInstructions)
+        if (!ChangeScene.changingScene && !quit && !inCredits && !inInstructions)
         {
             soundPlayer.PlaySound(click);
             creditsPanel.SetActive(true);
@@ -79,7 +79,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void ShowInstructions()
     {
-        if (!ChangeScene.changingScene && Crossfade.over && !quit && !inCredits && !inInstructions)
+        if (!ChangeScene.changingScene && !quit && !inCredits && !inInstructions)
         {
             soundPlayer.PlaySound(click);
             instructionsPanel.SetActive(true);
