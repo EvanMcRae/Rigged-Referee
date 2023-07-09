@@ -9,26 +9,20 @@ public class PauseScreen : MonoBehaviour
     public static bool paused = false;
     public static bool canPause = true;
     public static bool quit = true;
-
     CanvasGroup pauseMenuGroup;
-
-    public CanvasGroup pauseContainerGroup;
-
     public UnityEngine.UI.Button resumeButton;
-
-    public CanvasGroup quitPrompt;
+    public SoundPlayer soundPlayer;
+    public SoundClip click;
 
     // Start is called before the first frame update
     void Start()
     {
         pauseMenuGroup = GetComponent<CanvasGroup>();
-        //Debug.Log(Camera.main.pixelWidth + "  " + Camera.main.pixelHeight);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if ((Input.GetAxisRaw("Vertical") != 0) && EventSystem.current.currentSelectedGameObject == null && paused)
         {
             EventSystem.current.SetSelectedGameObject(resumeButton.gameObject);
@@ -62,14 +56,14 @@ public class PauseScreen : MonoBehaviour
         {
             source.Pause();
         }
+        foreach (AudioSource source in soundPlayer.sources)
+        {
+            source.UnPause();
+        }
         pauseMenuGroup.alpha = 1;
         pauseMenuGroup.blocksRaycasts = true;
         pauseMenuGroup.interactable = true;
         UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(resumeButton.gameObject);
-
-        pauseContainerGroup.alpha = 1;
-        pauseContainerGroup.blocksRaycasts = true;
-        pauseContainerGroup.interactable = true;
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -77,6 +71,7 @@ public class PauseScreen : MonoBehaviour
 
     public void unPause()
     {
+        soundPlayer.PlaySound(click);
         AudioSource[] sources = FindObjectsOfType<AudioSource>();
         paused = false;
         Time.timeScale = 1;
@@ -84,7 +79,6 @@ public class PauseScreen : MonoBehaviour
         {
             source.UnPause();
         }
-        // TODO super sloppy but re-pauses music + dialog speakers
         if (AudioManager.instance.paused)
             AudioManager.instance.PauseCurrent();
         
@@ -92,51 +86,20 @@ public class PauseScreen : MonoBehaviour
         pauseMenuGroup.blocksRaycasts = false;
         pauseMenuGroup.interactable = false;
 
-        pauseContainerGroup.alpha = 0;
-        pauseContainerGroup.blocksRaycasts = false;
-        pauseContainerGroup.interactable = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
     }
 
-    public void PromptQuit()
-    {
-        quitPrompt.alpha = 1;
-        quitPrompt.blocksRaycasts = true;
-        quitPrompt.interactable = true;
-
-        pauseMenuGroup.alpha = 0;
-        pauseMenuGroup.blocksRaycasts = false;
-        pauseMenuGroup.interactable = false;
-    }
-
-    public void CancelPrompt()
-    {
-        closePrompt();
-
-        pauseMenuGroup.alpha = 1;
-        pauseMenuGroup.blocksRaycasts = true;
-        pauseMenuGroup.interactable = true;
-    }
-
-    public void closePrompt()
-    {
-        quitPrompt.alpha = 0;
-        quitPrompt.blocksRaycasts = false;
-        quitPrompt.interactable = false;
-    }
-
     public void QuitToTitle()
     {
+        soundPlayer.PlaySound(click);
         StartCoroutine(BackToMenu());
     }
 
     public IEnumerator BackToMenu() {
         quit = true;
-        closePrompt();
         unPause();
         ChangeScene.changingScene = true;
-        // CanvasManager.InstantHideHUD();
         AudioManager.instance.FadeOutCurrent();
         Crossfade.current.StartFade();
         yield return new WaitForSeconds(1f);
