@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f35be989a351ee4983eb0f562df9955, type: 3}
-  m_Name: MatchEnd
+  m_Name: EndCountdown
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: cb6160e79c298fc4e9139ee88acd2d58, type: 3}

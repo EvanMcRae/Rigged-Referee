@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private Image susMeter;
 
     [SerializeField] private SoundPlayer soundPlayer;
-    [SerializeField] private SoundClip winSound, loseSound, matchStart, matchEnd;
+    [SerializeField] private SoundClip winSound, loseSound;
 
     //are the fighters taking an action
     private bool inAction;
@@ -244,7 +244,7 @@ public class GameController : MonoBehaviour
         print("Win Stage");
         WinMenu.GetComponent<WinLoseScreen>().showWinPanel();
         begun = false;
-        soundPlayer.PlaySound(matchEnd);
+        soundPlayer.PlaySound(winSound);
         // show win dialog with advance to next stage button
     }
 

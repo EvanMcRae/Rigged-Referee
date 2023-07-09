@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f35be989a351ee4983eb0f562df9955, type: 3}
   m_Name: Win
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 6c27fed944f9a2049a3aeb05b4f5b84a, type: 3}
