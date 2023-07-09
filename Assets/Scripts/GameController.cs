@@ -27,19 +27,27 @@ public class GameController : MonoBehaviour
     [SerializeField] private SoundPlayer soundPlayer;
     [SerializeField] private SoundClip winSound, loseSound, matchStart, matchEnd;
 
+    //are the fighters taking an action
+    private bool inAction;
+    //which action is being taken
+    private int choice;
+
     // Start is called before the first frame update
     void Start()
     {
         susMeter = GameObject.Find("Canvas/SuspicionBar/SuspicionBarFill").GetComponent<Image>();
         timer = GameObject.Find("Canvas/Timer").GetComponent<Timer>();
         stageLabel = GameObject.Find("Canvas/StageLabel").GetComponent<Text>();
+
+        inAction = false;
         nextStage();
-        //susMeter = GameObject.Find("Canvas/SuspicionBar/SuspicionBarFill").GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        TakeAction();
+
         if(Input.GetButtonDown("Fire1")){
             AwardScore(0);
         }
@@ -53,6 +61,48 @@ public class GameController : MonoBehaviour
         {
             nextStage();
         }
+    }
+
+    void TakeAction(){
+        if(!inAction){
+            inAction = true;
+            StartCoroutine(DecideAction());
+        }
+    }
+
+    IEnumerator DecideAction(){
+        choice = Random.Range(0, 6);
+
+        if(choice == 1){
+            //fighter 1 hit
+            fighterOne.GetComponent<FighterController>().Punch();
+            fighterTwo.GetComponent<FighterController>().Hurt();
+        }
+        else if(choice == 2){
+            //fighter 1 blocked
+            fighterOne.GetComponent<FighterController>().Punch();
+        }
+        else if(choice == 3){
+            //f2 hit
+            fighterOne.GetComponent<FighterController>().Hurt();
+            fighterTwo.GetComponent<FighterController>().Punch();
+        }
+        else if(choice == 4){
+            //f2 blocked
+            fighterTwo.GetComponent<FighterController>().Punch();
+        }
+        else{
+            //idle
+        }
+
+        yield return new WaitForSeconds(2f);
+        //set both idle
+        fighterOne.GetComponent<FighterController>().Stand();
+        fighterTwo.GetComponent<FighterController>().Stand();
+        yield return new WaitForSeconds(.067f);
+        //resetchoice
+        choice = 0;
+        inAction = false;
     }
 
     //awards points to a figther based on the player's command

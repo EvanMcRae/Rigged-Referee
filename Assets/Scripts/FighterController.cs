@@ -19,11 +19,11 @@ public class FighterController : MonoBehaviour
     }
 
     //fixed update always runs 60 times per second, independent of the frame rate
-    private void FixedUpdate() {
-        if(!inAnimation && GameController.begun){
-            StartCoroutine(TakeAction());
-        }
-    }
+    //private void FixedUpdate() {
+        //if(!inAnimation && GameController.begun){
+        //    StartCoroutine(TakeAction());
+        //}
+    //}
 
     //basic possible example of what AI could look like
     private IEnumerator TakeAction(){
@@ -141,6 +141,7 @@ public class FighterController : MonoBehaviour
         // add knockback, hit flash, etc idk
         anim.SetTrigger("hurt");
         soundPlayer.PlaySound(hurt);
+        GetComponent<SimpleFlash>().Flash(2, 8, true);
     }
     public void KnockOut()
     {
