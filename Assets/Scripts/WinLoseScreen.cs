@@ -47,7 +47,7 @@ public class WinLoseScreen : MonoBehaviour
 
     public void clickMainMenu()
     {
-        
+        pauseRef.GetComponent<PauseScreen>().QuitToTitle();
     }
 
 }
