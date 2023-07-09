@@ -1442,7 +1442,6 @@ MonoBehaviour:
     match so that the fighter on the left side wins, without raising suspicion of
     your cheating ways to the fighter on the right side.
 
-    
 
     Press Z (Keyboard),
     Left Mouse Click, or A (Controller) to award a point to the fighter on the left.
@@ -1466,8 +1465,8 @@ MonoBehaviour:
     suspicion a lot.
 
 
-    You win if fighter 1 wins, and you lose if fighter 2
-    wins or if suspicion gets too high.'
+    You win if fighter 1 wins, and you lose if fighter 2 wins
+    or if suspicion gets too high.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d669f81e1a83e0441b9c038c7a28f2ba, type: 2}
   m_sharedMaterial: {fileID: 7035181827977515771, guid: d669f81e1a83e0441b9c038c7a28f2ba, type: 2}
