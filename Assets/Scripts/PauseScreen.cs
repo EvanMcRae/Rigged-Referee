@@ -28,7 +28,7 @@ public class PauseScreen : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(resumeButton.gameObject);
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Fire3"))
         {
             if (ChangeScene.changingScene || !Crossfade.over)
             {
