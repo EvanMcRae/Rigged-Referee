@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Rig the Referee.sln"
+    "dotnet.defaultSolution": "Rigged-Referee.sln"
 }
